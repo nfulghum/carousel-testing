@@ -2,7 +2,16 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import Carousel from "./Carousel";
 
-it("works when you click on the right arrow", function() {
+test('renders without crashing', () => {
+  render(<Carousel />)
+})
+
+test('should match snapshot', () => {
+  const { asFragment } = render(<Carousel />);
+  expect(asFragment()).toMatchSnapshot();
+})
+
+it("works when you click on the right arrow", () => {
   const { queryByTestId, queryByAltText } = render(<Carousel />);
 
   // expect the first image to show, but not the second
